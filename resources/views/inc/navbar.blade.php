@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {{--Left Side of Navbar--}}
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('pages.index') }}">Home <span
                             class="sr-only">(current)</span></a>
                 </li>
@@ -21,7 +21,16 @@
             </ul>
 
             {{--Right Side of Navbar--}}
-            <ul class="navbar-nav ml-auto"></ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('todos.index') }}">Todos<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('todos.create') }}">New Todo<span
+                            class="sr-only">(current)</span></a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

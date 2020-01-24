@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodosController extends Controller
 {
@@ -19,7 +20,13 @@ class TodosController extends Controller
      */
     public function index()
     {
-        $todos = Todo::orderBy('created_at', 'desc')->paginate(8);
+        // get the authenticated user
+        $user = Auth::user();
+
+        // get all the todos that belongs to the authenticated user
+        $todos = $user->todos()->orderBy('created_at', 'desc')->paginate(8);
+
+        // return a view with all todos
         return view('todos.index', compact('todos'));
     }
 
@@ -57,6 +64,8 @@ class TodosController extends Controller
         $todo = new Todo;
         $todo->title = $request->title;
         $todo->body = $request->body;
+        // add the authenticated user to todo user_id
+        $todo->user_id = Auth::id();
         // save it to database
         $todo->save();
 

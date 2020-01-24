@@ -34,10 +34,16 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ asset('storage/pics/' . Auth::user()->image ) }}"
+                                 class="rounded-circle mr-3"
+                                 width="30px"
+                                 height="30px"
+                                 alt="Profile Image">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('home') }}">Dashboard</a>
+                            <a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a>
                             <a class="dropdown-item" href="#"
                                onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">Logout</a>
